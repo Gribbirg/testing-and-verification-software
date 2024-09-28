@@ -8,7 +8,7 @@ import javax.sound.sampled.AudioSystem
 
 class AudioMixer {
 
-    fun cutAudioClip(clip: Clip): AudioInputStream {
+    private fun cutAudioClip(clip: Clip): AudioInputStream {
         val inputStream = AudioSystem.getAudioInputStream(clip.file)
         val format = inputStream.format
         val startFrame = (clip.startTime * format.frameRate).toLong()
