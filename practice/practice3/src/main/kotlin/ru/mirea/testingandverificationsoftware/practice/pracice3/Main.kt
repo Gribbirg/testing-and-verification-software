@@ -5,7 +5,7 @@ import java.io.File
 fun main() {
     val audioMixer = AudioMixer()
     val clips = getAudioClips()
-    val outputFile = File("assets/audio/output_mix.wav")
+    val outputFile = File("practice/practice3/src/main/resources/audio/output_mix.wav")
     if (outputFile.exists()) {
         outputFile.delete()
         outputFile.createNewFile()
@@ -33,7 +33,7 @@ private fun getAudioClips(): List<Clip> {
         println("Введите конец отрезка в секундах для файла #$i:")
         val endTime = scanner.nextDouble()
 
-        clips.add(Clip(File("assets/audio/$fileName.wav"), startTime, endTime))
+        clips.add(Clip(File("practice/practice3/src/main/resources/audio/$fileName.wav"), startTime, endTime))
     }
     return clips
 }
