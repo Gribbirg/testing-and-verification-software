@@ -50,7 +50,7 @@ class AudioMixerTest {
 
     @Test
     fun `test cutAudioClip with invalid time range`() {
-        val clip = Clip(File("src/test/resources/audio/1.wav"), 20.0, 10.0) // end time is before start time
+        val clip = Clip(File("src/test/resources/audio/1.wav"), 20.0, 10.0)
 
         assertThrows(IllegalArgumentException::class.java) {
             AudioMixer.cutAudioClip(clip)
