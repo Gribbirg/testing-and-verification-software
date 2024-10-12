@@ -3,7 +3,6 @@ package ru.mirea.testingandverificationsoftware.practice.pracice3
 import java.io.File
 
 fun main() {
-    val audioMixer = AudioMixer()
     val clips = getAudioClips()
     val outputFile = File("practice/practice3/src/main/resources/audio/output_mix.wav")
     if (outputFile.exists()) {
@@ -12,7 +11,7 @@ fun main() {
     }
 
     try {
-        audioMixer.mixAudioClips(clips, outputFile)
+        AudioMixer.mixAudioClips(clips, outputFile)
         println("Микс создан: ${outputFile.absolutePath}")
     } catch (e: Exception) {
         e.printStackTrace()

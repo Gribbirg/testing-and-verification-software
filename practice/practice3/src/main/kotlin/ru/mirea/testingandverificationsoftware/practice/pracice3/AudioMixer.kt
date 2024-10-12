@@ -6,9 +6,12 @@ import javax.sound.sampled.AudioFileFormat
 import javax.sound.sampled.AudioInputStream
 import javax.sound.sampled.AudioSystem
 
-class AudioMixer {
+object AudioMixer {
 
-    private fun cutAudioClip(clip: Clip): AudioInputStream {
+    fun cutAudioClip(clip: Clip): AudioInputStream {
+        require(clip.file.exists()) { "File does not exist: $clip" }
+        require(clip.startTime <= clip.endTime) { "End time is smaller then start time for $clip." }
+
         val inputStream = AudioSystem.getAudioInputStream(clip.file)
         val format = inputStream.format
         val startFrame = (clip.startTime * format.frameRate).toLong()
@@ -22,6 +25,8 @@ class AudioMixer {
     }
 
     fun mixAudioClips(clips: List<Clip>, outputFile: File) {
+        require(clips.isNotEmpty()) { "Clips must be not empty." }
+
         val audioFormat = AudioSystem.getAudioInputStream(clips[0].file).format
 
         val audioStreams = clips.map { cutAudioClip(it) }

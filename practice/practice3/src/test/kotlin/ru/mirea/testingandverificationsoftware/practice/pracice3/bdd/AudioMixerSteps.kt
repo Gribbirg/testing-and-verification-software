@@ -11,7 +11,6 @@ import java.io.File
 
 class AudioMixerSteps {
 
-    private val audioMixer = AudioMixer()
     private lateinit var clips: List<Clip>
     private lateinit var outputFile: File
 
@@ -30,7 +29,7 @@ class AudioMixerSteps {
     fun `create mix`(action: String) {
         if (action == "Create mix") {
             outputFile = getOutputFile()
-            audioMixer.mixAudioClips(clips, outputFile)
+            AudioMixer.mixAudioClips(clips, outputFile)
         }
     }
 
