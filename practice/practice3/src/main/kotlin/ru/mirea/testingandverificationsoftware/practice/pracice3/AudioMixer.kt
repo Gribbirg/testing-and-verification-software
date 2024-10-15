@@ -9,7 +9,7 @@ import javax.sound.sampled.AudioSystem
 object AudioMixer {
 
     fun cutAudioClip(clip: Clip): AudioInputStream {
-        require(clip.file.exists()) { "File does not exist: $clip" }
+        require(clip.file.exists()) { "File does not exist: ${clip.file.absolutePath}" }
         require(clip.startTime <= clip.endTime) { "End time is smaller then start time for $clip." }
 
         val inputStream = AudioSystem.getAudioInputStream(clip.file)
